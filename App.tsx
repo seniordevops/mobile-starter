@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, Image, TextInput, KeyboardAvoidingView, Keyboard, Platform, Dimensions } from 'react-native';
+import { StyleSheet, Text, Image, ImageBackground, KeyboardAvoidingView, Keyboard, Platform, Dimensions } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
-export const deviceHeight = Dimensions.get("window").height;
-export const deviceWidth = Dimensions.get("window").width;
+import LoginForm from './src/components/LoginForm';
+import { deviceWidth, deviceHeight } from './src/helpers/globals';
 
 export default function App() {
 
@@ -23,19 +23,23 @@ export default function App() {
           flex:1 , 
           alignItems: 'center', 
           justifyContent: "center", 
-          width: deviceWidth
-        }}
+          width: deviceWidth}}
         >
-          <Image 
-            source={require('./src/components/images/watchpointBanner.png')}
-            style={{...StyleSheet.absoluteFillObject}}
-        />
-        <Text>Application Bare Bones</Text>
-        <TextInput
-          style={{ height: 40, borderColor: 'grey', borderWidth: 1, width: 200, borderRadius: 3, paddingLeft: 17 }}
-          onChangeText={text => onChangeText(text)}
-          value={value}
-        />
+      <ImageBackground
+        source={require('./src/components/images/watchpointBanner.png')}
+        style={{
+          width: deviceWidth, 
+          height: deviceHeight * 0.45, 
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+          >
+            <Text style={{color:'black', fontSize: 45}}>
+              OTHER BS
+            </Text>
+            </ImageBackground>
+          <LoginForm />
+
         <StatusBar style="auto" />
         </LinearGradient>
     </KeyboardAvoidingView>
